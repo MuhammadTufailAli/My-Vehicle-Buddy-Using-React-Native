@@ -1,3 +1,44 @@
+// import * as React from "react";
+// import {
+//   Button,
+//   StyleSheet,
+//   Text,
+//   View,
+//   ActivityIndicator,
+//   FlatList,
+//   TouchableOpacity,
+//   TextInput,
+// } from "react-native";
+// import { SafeAreaView } from "react-native-safe-area-context";
+
+// const SelectUi = ({ navigation, route }) => {
+//   console.log(route.params.user);
+//   console.log(route.params.id);
+//   return (
+//     <SafeAreaView>
+//       <Button
+//         title="Soban Ui"
+//         onPress={() => {
+//           navigation.navigate("Buy and Sell");
+//         }}
+//       />
+//       <Button
+//         title="Tufail Ui"
+// onPress={() => {
+//   navigation.navigate("Dashboard", {
+//     id: route.params.id,
+//     user: route.params.user,
+//     firstname: route.params.firstname,
+//     lastname: route.params.lastname,
+//   });
+// }}
+//       />
+//     </SafeAreaView>
+//   );
+// };
+
+// export default SelectUi;
+
 import React from "react";
 import {
   ImageBackground,
@@ -9,7 +50,7 @@ import {
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 
-const WelcomeScreen = ({ navigation }) => (
+const SelectUi = ({ navigation, route }) => (
   <View style={styles.container}>
     <ImageBackground
       source={require("../assets/background2.jpg")}
@@ -28,7 +69,7 @@ const WelcomeScreen = ({ navigation }) => (
             margin: 10,
           }}
           onPress={() => {
-            navigation.navigate("Sign in", { user: "ShopOwner" });
+            navigation.navigate("Buy and Sell");
           }}
         >
           <Text
@@ -38,7 +79,7 @@ const WelcomeScreen = ({ navigation }) => (
               color: "#f0f0f0",
             }}
           >
-            Login As Shop Owner{" "}
+            Soban UI{" "}
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
@@ -52,7 +93,12 @@ const WelcomeScreen = ({ navigation }) => (
             margin: 10,
           }}
           onPress={() => {
-            navigation.navigate("Sign in", { user: "Client" });
+            navigation.navigate("Dashboard", {
+              id: route.params.id,
+              user: route.params.user,
+              firstname: route.params.firstname,
+              lastname: route.params.lastname,
+            });
           }}
         >
           <Text
@@ -62,31 +108,7 @@ const WelcomeScreen = ({ navigation }) => (
               color: "#f0f0f0",
             }}
           >
-            Login As Customer
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={{
-            padding: 13,
-            margin: 10,
-            backgroundColor: "#1DA1F2",
-            alignItems: "center",
-            borderRadius: "50%",
-
-            width: "55%",
-          }}
-          onPress={() => {
-            navigation.navigate("AdminSignin", { user: "Admin" });
-          }}
-        >
-          <Text
-            style={{
-              fontSize: 16,
-              fontWeight: "600",
-              color: "#f0f0f0",
-            }}
-          >
-            Login As Admin
+            Tufail UI
           </Text>
         </TouchableOpacity>
       </View>
@@ -112,4 +134,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default WelcomeScreen;
+export default SelectUi;

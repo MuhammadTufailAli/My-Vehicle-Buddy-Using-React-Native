@@ -34,7 +34,7 @@ const SignIn = ({ navigation, route }) => {
 
           setemail("");
           setpassword("");
-          navigation.navigate("Dashboard", {
+          navigation.navigate("SelectUI", {
             id: id,
             user: user,
             firstname: data[key].firstname,
@@ -62,7 +62,7 @@ const SignIn = ({ navigation, route }) => {
           cond = false;
           setemail("");
           setpassword("");
-          navigation.navigate("Customer Dashboard", {
+          navigation.navigate("SelectUI2", {
             id: id,
             user: user,
             firstname: data[key].firstname,
@@ -100,6 +100,7 @@ const SignIn = ({ navigation, route }) => {
         />
 
         <TextInput
+          secureTextEntry={true}
           style={styles.inputText}
           placeholder="Enter Password"
           value={password}

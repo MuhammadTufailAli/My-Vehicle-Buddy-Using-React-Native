@@ -16,6 +16,11 @@ import WelcomeScreen from "./Screens/WelcomeScreen";
 import EditProfile from "./Screens/EditProfieCredentials";
 import IntroScreen from "./Screens/IntroScreen";
 import HomeShopOwner from "./Screens/homeShopOwner";
+import SelectUi from "./Screens/SelectUi";
+import SobanScreen from "./Screens/SobanScreen";
+import SelectUi2 from "./Screens/SelectUi2";
+import AdminSignin from "./Screens/AdminSignin";
+import AdminScreen from "./Screens/AdminScreen";
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -32,6 +37,11 @@ export default function App() {
         <Stack.Screen name="Sign in" component={SignIn} />
         <Stack.Screen name="Customer Dashboard" component={customerDashboard} />
         <Stack.Screen name="Setting" component={EditProfile} />
+        <Stack.Screen name="SelectUI" component={SelectUi} />
+        <Stack.Screen name="SelectUI2" component={SelectUi2} />
+        <Stack.Screen name="Buy and Sell" component={SobanScreen} />
+        <Stack.Screen name="AdminSignin" component={AdminSignin} />
+        <Stack.Screen name="AdminScreen" component={AdminScreen} />
 
         <Stack.Screen name="Edit Product" component={ShopOwnerEditProduct} />
 
