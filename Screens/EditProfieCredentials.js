@@ -9,16 +9,19 @@ import {
   TouchableOpacity,
   TextInput,
 } from "react-native";
+const validator = require("validator");
+import Icon from "react-native-vector-icons/FontAwesome";
 
-const EditProfile = ({ navigation, extraData }) => {
-  const user = extraData.user;
-  const id = extraData.id;
+const EditProfile = ({ navigation, route }) => {
+  const id = route.params.id;
+  const user = route.params.user;
   console.log(user);
-  const [firstname, setfirstname] = React.useState();
-  const [lastname, setlastname] = React.useState();
-  const [email, setemail] = React.useState();
-  const [password, setpassword] = React.useState();
-  const [confirmpassword, setconfirmpassword] = React.useState();
+  console.log(id);
+  const [firstname, setfirstname] = React.useState("");
+  const [lastname, setlastname] = React.useState("");
+  const [email, setemail] = React.useState("");
+  const [password, setpassword] = React.useState("");
+  const [confirmpassword, setconfirmpassword] = React.useState("");
 
   const firebaseUrl =
     "https://reactnativefirstdatabase-a7b2b-default-rtdb.firebaseio.com/";
@@ -61,53 +64,85 @@ const EditProfile = ({ navigation, extraData }) => {
   return (
     <View>
       <View style={{ alignItems: "center", marginTop: 50 }}>
-        <Text>My Vehicle Buddy</Text>
+        <Icon
+          style={{ margin: 10, justifyContent: "center", color: "#1DA1F2" }}
+          name="car"
+          size={25}
+        />
+        <Text style={{ fontSize: 20, fontWeight: "700", marginTop: 40 }}>
+          {user} Edit Profile
+        </Text>
       </View>
-      <Text>First Name</Text>
+
       <TextInput
         style={styles.inputText}
         placeholder="Enter First Name"
         onChangeText={(value) => setfirstname(value)}
       />
-      <Text>Last Name</Text>
+
       <TextInput
         style={styles.inputText}
         placeholder="Enter Last Name"
         onChangeText={(value) => setlastname(value)}
       />
-      <Text>Email</Text>
+
       <TextInput
         style={styles.inputText}
         placeholder="Enter Email"
         onChangeText={(value) => setemail(value)}
       />
-      <Text>Password</Text>
+
       <TextInput
         style={styles.inputText}
         placeholder="Enter Password"
         onChangeText={(value) => setpassword(value)}
       />
-      <Text>Confirm Password</Text>
+
       <TextInput
         style={styles.inputText}
         placeholder="Enter Confirmed Password"
         onChangeText={(value) => setconfirmpassword(value)}
       />
       <View style={{ alignItems: "center" }}>
-        <Button
-          title="Submit"
-          onPress={() => {
-            update();
-            navigation.navigate("Sign in", { user: user });
-          }}
-        />
-
         <TouchableOpacity
+          style={{
+            padding: 10,
+            backgroundColor: "#1DA1F2",
+            width: "90%",
+            alignItems: "center",
+            borderRadius: "50%",
+            marginTop: 10,
+          }}
           onPress={() => {
-            navigation.navigate("Sign in");
+            if (
+              firstname != "" &&
+              lastname != "" &&
+              email != "" &&
+              password != "" &&
+              confirmpassword != ""
+            ) {
+              if (validator.isEmail(email)) {
+                if (password.length > 6) {
+                  if (password == confirmpassword) {
+                    update();
+                    navigation.navigate("Sign in", { user: user });
+                  } else {
+                    alert("Confirm password does not match");
+                  }
+                } else {
+                  alert("Password must be greater than 6");
+                }
+              } else {
+                alert("Invalid Email");
+              }
+            } else {
+              alert("Enter all Fields");
+            }
+            // update();
+            // navigation.navigate("Sign in", { user: user });
           }}
         >
-          <Text>{"\n"} Already have an account? SignIn</Text>
+          <Text style={{ color: "white", fontWeight: "500" }}>Update</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -119,8 +154,11 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   inputText: {
-    padding: 10,
-    borderWidth: 1,
+    padding: 15,
+    borderBottomWidth: 0.5,
+    marginLeft: 20,
+    marginRight: 20,
+    marginTop: 7,
   },
 });
 

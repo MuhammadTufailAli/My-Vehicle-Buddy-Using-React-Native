@@ -62,7 +62,7 @@ const WelcomeScreen = ({ navigation }) => (
               color: "#f0f0f0",
             }}
           >
-            Login AS Customer
+            Login As Customer
           </Text>
         </TouchableOpacity>
         <TouchableOpacity

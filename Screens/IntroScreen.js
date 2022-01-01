@@ -15,10 +15,10 @@ import Icon from "react-native-vector-icons/FontAwesome";
 
 const IntroScreen = ({ navigation }) => {
   return (
-    <SafeAreaView style={{ backgroundColor: "#AC3BFF", height: "100%" }}>
+    <SafeAreaView style={{ backgroundColor: "#1DA1F2", height: "100%" }}>
       <View style={{ alignItems: "center" }}>
         <Icon
-          style={{ margin: 10, justifyContent: "center", color: "#1DA1F2" }}
+          style={{ margin: 10, justifyContent: "center", color: "black" }}
           name="car"
           size={30}
         />

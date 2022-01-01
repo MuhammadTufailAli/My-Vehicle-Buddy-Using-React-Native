@@ -9,7 +9,11 @@ import {
   Button,
   ActivityIndicator,
   FlatList,
+  TabBar,
+  SafeAreaView,
 } from "react-native";
+import { color } from "react-native-reanimated";
+import Icon from "react-native-vector-icons/FontAwesome";
 
 const firebaseUrl =
   "https://reactnativefirstdatabase-a7b2b-default-rtdb.firebaseio.com/";
@@ -59,53 +63,148 @@ function inventory({ navigation, route }) {
     );
   }
   return (
-    <View>
-      <View style={{ flexDirection: "row", margin: 10 }}>
-        <FlatList
-          data={array}
-          renderItem={({ item }) => {
-            return (
-              <View>
-                <TouchableOpacity
-                  onPress={() => {
-                    navigation.navigate("Product", {
-                      id: id,
-                      photoUri: item.uri,
-                      name: item.title,
-                      description: item.description,
-                      condition: item.condition,
-                      price: item.price,
-                      location: item.location,
-                    });
-                  }}
-                  style={{ flexDirection: "row" }}
-                >
-                  <Image
-                    source={{
-                      uri: item.uri,
-                    }}
-                    style={{
-                      width: 200,
-                      height: 150,
-                      borderRadius: 10,
-                      margin: 10,
-                    }}
-                  />
-                  <Text style={{ margin: 10 }}>
-                    {item.title}
-                    {"\n"}
-                    Rs. {item.price}
-                    {"\n"}
-                    Condition: {item.condition}
-                  </Text>
-                </TouchableOpacity>
-              </View>
-            );
-          }}
-          keyExtractor={(item, index) => index.toString()}
-        />
+    <SafeAreaView style={{ backgroundColor: "white", height: "100%" }}>
+      <View
+        style={{
+          alignItems: "center",
+          borderBottomWidth: 0.5,
+          borderColor: "grey",
+          paddingBottom: 5,
+        }}
+      >
+        <Text style={{ fontSize: 24 }}>
+          <Text style={{ color: "red" }}>Hot</Text>{" "}
+          <Icon
+            style={{ justifyContent: "center", color: "red" }}
+            name="fire"
+            size={24}
+          />
+          <Text style={{ color: "#1DA1F2" }}> Products Today</Text>
+        </Text>
       </View>
-    </View>
+      <View>
+        <View style={{ flexDirection: "row", margin: 10 }}>
+          <FlatList
+            data={array}
+            renderItem={({ item }) => {
+              return (
+                <View
+                  elevation={5}
+                  style={{
+                    flexDirection: "row",
+                    backgroundColor: "#DCDCDC",
+                    borderRadius: 15,
+                    marginBottom: 10,
+                    shadowColor: "#000000",
+                    shadowOpacity: 0.4,
+                    shadowRadius: 1,
+                    shadowOffset: {
+                      height: 1,
+                      width: 1,
+                    },
+                  }}
+                >
+                  <View
+                    style={{
+                      width: "45%",
+                      borderRightWidth: 1,
+                      borderColor: "white",
+                    }}
+                  >
+                    <TouchableOpacity
+                      onPress={() => {
+                        navigation.navigate("Product", {
+                          id: id,
+                          photoUri: item.uri,
+                          name: item.title,
+                          description: item.description,
+                          condition: item.condition,
+                          price: item.price,
+                          location: item.location,
+                        });
+                      }}
+                      style={{ flexDirection: "row" }}
+                    >
+                      <Image
+                        source={{
+                          uri: item.uri,
+                        }}
+                        style={{
+                          width: 155,
+                          height: 150,
+                          borderRadius: 10,
+                          margin: 10,
+                        }}
+                      />
+                    </TouchableOpacity>
+                  </View>
+                  <View style={{ width: "55%" }}>
+                    <TouchableOpacity
+                      onPress={() => {
+                        navigation.navigate("Product", {
+                          id: id,
+                          photoUri: item.uri,
+                          name: item.title,
+                          description: item.description,
+                          condition: item.condition,
+                          price: item.price,
+                          location: item.location,
+                        });
+                      }}
+                    >
+                      <Text
+                        style={{
+                          fontWeight: "600",
+                          marginTop: 25,
+                          marginLeft: 10,
+                          fontSize: 20,
+                        }}
+                      >
+                        {item.title}
+                      </Text>
+                      <Text
+                        style={{
+                          marginTop: 5,
+                          marginLeft: 10,
+                          color: "grey",
+                        }}
+                      >
+                        {item.description}
+                      </Text>
+                      <Text
+                        style={{
+                          fontSize: 18,
+                          fontWeight: "600",
+                          marginTop: 5,
+                          marginLeft: 10,
+                          color: "#1DA1F2",
+                        }}
+                      >
+                        Rs. {item.price}
+                      </Text>
+                      <Text
+                        style={{
+                          fontSize: 16,
+                          fontWeight: "600",
+                          marginTop: 5,
+                          marginLeft: 10,
+                        }}
+                      >
+                        Condition:{" "}
+                        <Text style={{ color: "#1DA1F2", fontSize: 16 }}>
+                          {item.condition}
+                        </Text>
+                      </Text>
+                    </TouchableOpacity>
+                  </View>
+                </View>
+              );
+            }}
+            keyExtractor={(item, index) => index.toString()}
+          />
+        </View>
+      </View>
+    </SafeAreaView>
   );
 }
 

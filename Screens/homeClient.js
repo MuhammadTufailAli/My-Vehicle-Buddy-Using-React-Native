@@ -12,10 +12,9 @@ import {
   ActivityIndicator,
 } from "react-native";
 
-const HomeShopOwner = ({ navigation, extraData }) => {
+const HomeClient = ({ navigation, extraData }) => {
   const [getdata, setdata] = React.useState([]);
   const [getcondition, setcondition] = React.useState(true);
-
   const getcovid = () => {
     fetch(`https://covid-19-data.p.rapidapi.com/country?name=Pakistan`, {
       method: "GET",
@@ -40,7 +39,6 @@ const HomeShopOwner = ({ navigation, extraData }) => {
 
     getcovid();
   }, []);
-
   if (getcondition) {
     return (
       <View style={{ justifyContent: "center", alignItems: "center" }}>
@@ -50,7 +48,6 @@ const HomeShopOwner = ({ navigation, extraData }) => {
       </View>
     );
   }
-
   return (
     <View style={{ marginTop: "11%" }}>
       <View
@@ -67,7 +64,7 @@ const HomeShopOwner = ({ navigation, extraData }) => {
       </View>
 
       <Text style={{ fontSize: 20, marginTop: 30, marginLeft: 5 }}>
-        You are ShopOwner Of{" "}
+        You are Customer Of{" "}
       </Text>
       <View style={{ alignItems: "center", marginTop: 5, marginLeft: 5 }}>
         <Text
@@ -91,21 +88,20 @@ const HomeShopOwner = ({ navigation, extraData }) => {
       >
         Things you can do:
       </Text>
-      <Text style={{ marginTop: 8, fontSize: 18, marginLeft: 5 }}>
-        1) Post an Ad
+      <Text style={{ marginTop: 8, fontSize: 19, marginLeft: 5 }}>
+        1) View an Ad
       </Text>
-      <Text style={{ marginTop: 8, fontSize: 18, marginLeft: 5 }}>
-        2) View your Ad
+      <Text style={{ marginTop: 8, fontSize: 19, marginLeft: 5 }}>
+        2) Add Prdouct to Cart
       </Text>
-      <Text style={{ marginTop: 8, fontSize: 18, marginLeft: 5 }}>
-        3) Edit your Ad
+      <Text style={{ marginTop: 8, fontSize: 19, marginLeft: 5 }}>
+        3) Delete Product from Cart
       </Text>
-      <Text style={{ marginTop: 8, fontSize: 18, marginLeft: 5 }}>
-        4) Delete your Ad
+
+      <Text style={{ marginTop: 8, fontSize: 19, marginLeft: 5 }}>
+        4) Update your profile credentials
       </Text>
-      <Text style={{ marginTop: 8, fontSize: 18, marginLeft: 5 }}>
-        5) Update your profile credentials
-      </Text>
+
       <Text
         style={{
           marginTop: 10,
@@ -117,37 +113,37 @@ const HomeShopOwner = ({ navigation, extraData }) => {
       >
         Why you should use our App:
       </Text>
-      <Text style={{ marginTop: 8, fontSize: 18, marginLeft: 5 }}>
+      <Text style={{ marginTop: 8, fontSize: 19, marginLeft: 5 }}>
         <Text style={{ color: "red" }}>Covid</Text> Stats in Pakistan
       </Text>
-      <Text style={{ marginTop: 8, fontSize: 18, marginLeft: 5 }}>
+      <Text style={{ marginTop: 8, fontSize: 19, marginLeft: 5 }}>
         Confirmed Cases:{" "}
         <Text style={{ color: "red" }}>{getdata[0].confirmed}</Text>{" "}
       </Text>
-      <Text style={{ marginTop: 8, fontSize: 18, marginLeft: 5 }}>
+      <Text style={{ marginTop: 8, fontSize: 19, marginLeft: 5 }}>
         Critical Cases:{" "}
         <Text style={{ color: "red" }}>{getdata[0].critical}</Text>
       </Text>
-      <Text style={{ marginTop: 8, fontSize: 18, marginLeft: 5 }}>
+      <Text style={{ marginTop: 8, fontSize: 19, marginLeft: 5 }}>
         Deaths: <Text style={{ color: "red" }}>{getdata[0].deaths}</Text>
       </Text>
-      <Text style={{ marginTop: 8, fontSize: 18, marginLeft: 5 }}>
+      <Text style={{ marginTop: 8, fontSize: 19, marginLeft: 5 }}>
         As <Text style={{ color: "red" }}>Covid</Text> is seperating once again
       </Text>
       <View style={{ alignItems: "center" }}>
-        <Text style={{ marginTop: 8, fontSize: 18, marginLeft: 5 }}>
+        <Text style={{ marginTop: 8, fontSize: 19, marginLeft: 5 }}>
           SHOP ONLINE
         </Text>
-        <Text style={{ marginTop: 8, fontSize: 18, marginLeft: 5 }}>
+        <Text style={{ marginTop: 8, fontSize: 19, marginLeft: 5 }}>
           STAY HOME
         </Text>
-        <Text style={{ marginTop: 8, fontSize: 18, marginLeft: 5 }}>
+        <Text style={{ marginTop: 8, fontSize: 19, marginLeft: 5 }}>
           STAY SAFE
         </Text>
         <Text
           style={{
             marginTop: 8,
-            fontSize: 18,
+            fontSize: 19,
             marginLeft: 5,
             color: "#1DA1F2",
             fontWeight: "bold",
@@ -166,7 +162,7 @@ const HomeShopOwner = ({ navigation, extraData }) => {
           borderRadius: "50%",
           marginLeft: "5%",
           marginRight: "5%",
-          marginTop: 5,
+          marginTop: 20,
         }}
         onPress={() => {
           navigation.navigate("Sign in", { user: extraData.user });
@@ -178,4 +174,4 @@ const HomeShopOwner = ({ navigation, extraData }) => {
   );
 };
 
-export default HomeShopOwner;
+export default HomeClient;

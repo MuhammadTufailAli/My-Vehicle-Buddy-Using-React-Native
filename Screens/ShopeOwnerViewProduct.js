@@ -10,18 +10,23 @@ import {
   ActivityIndicator,
   FlatList,
   TabBar,
+  SafeAreaView,
 } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import AddProduct from "./AddProduct";
+
 import EditProfile from "./EditProfieCredentials";
 const firebaseUrl =
   "https://reactnativefirstdatabase-a7b2b-default-rtdb.firebaseio.com/";
 
 const Tab = createBottomTabNavigator();
 
-function ShopeOwnerViewProduct({ extraData, navigation }) {
-  const subid = extraData.id;
+function ShopeOwnerViewProduct({ route, navigation }) {
+  const subid = route.params.id;
+  let data = route;
+  console.log(data);
+
   //array is to show only shopOwner product
   const [array, setarray] = useState([]);
   //All product is to get customer all products object
@@ -38,7 +43,6 @@ function ShopeOwnerViewProduct({ extraData, navigation }) {
     const Photoaddress = photoaddress;
 
     for (key in AllProduct) {
-      console.log(AllProduct[key].uri);
       if (AllProduct[key].uri == Photoaddress) {
         var requestOptions = {
           method: "DELETE",
@@ -110,69 +114,209 @@ function ShopeOwnerViewProduct({ extraData, navigation }) {
     );
   }
   return (
-    <View>
-      <View style={{ flexDirection: "row", margin: 10 }}>
-        <FlatList
-          data={array}
-          renderItem={({ item, index }) => {
-            if (typeof item === "object") {
-              return (
-                <View style={{ flexDirection: "row" }}>
-                  <Image
-                    source={{
-                      uri: item.uri,
-                    }}
-                    style={{
-                      width: 150,
-                      height: 150,
-                      borderRadius: 10,
-                      margin: 10,
-                    }}
-                  />
-                  <Text style={{ margin: 10 }}>
-                    {item.title}
-                    {"\n"}
-                    Rs. {item.price}
-                    {"\n"}
-                    Condition: {item.condition}
-                  </Text>
-                  <TouchableOpacity>
-                    <Button
-                      title="Delete"
-                      onPress={() => {
-                        deleteData(index, item.uri);
+    <SafeAreaView style={{ backgroundColor: "white", height: "100%" }}>
+      <View>
+        <View style={{ alignItems: "center" }}>
+          <Image
+            style={{ width: 90, height: 90 }}
+            source={require("../assets/profile.png")}
+          />
+          <Text style={{ marginTop: 10 }}>
+            @{route.params.firstname}
+            {route.params.lastname}
+          </Text>
+        </View>
+        <View
+          style={{ flexDirection: "row", marginLeft: "24%", marginTop: 20 }}
+        >
+          <Text style={{ marginRight: 15, fontSize: 18 }}>
+            <Text style={{ fontWeight: "bold" }}>{"\t"}219</Text>
+            {"\n"}
 
-                        const newarr = array.filter((item, i) => i != index);
-                        setarray(newarr);
-                      }}
-                    />
-                    <Button
-                      title="Edit"
-                      onPress={() => {
-                        //We have to update both client and shopowner product so we need client product id to update it we get it from under method
-                        for (key in AllProduct) {
-                          if (AllProduct[key].uri == item.uri) {
-                            let tempId = arrayOfID[index];
+            <Text style={{ color: "grey" }}> Followers</Text>
+          </Text>
 
-                            navigation.navigate("Edit Product", {
-                              productId: tempId,
-                              AccountID: subid,
-                              customerProductID: key,
-                              user: extraData.user,
-                            });
-                          }
-                        }
-                      }}
-                    />
-                  </TouchableOpacity>
-                </View>
-              );
-            }
+          <Text style={{ marginTop: 10, marginRight: 25, color: "grey" }}>
+            |
+          </Text>
+          <Text style={{ marginRight: 15, fontSize: 18 }}>
+            <Text style={{ fontWeight: "bold" }}>999</Text>
+            {"\n"}
+            <Text style={{ color: "grey" }}>Likes</Text>
+          </Text>
+        </View>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate("Setting", {
+              id: route.params.id,
+              user: route.params.user,
+            });
           }}
-          keyExtractor={(item, index) => index.toString()}
-        />
+          style={{
+            width: "90%",
+            borderWidth: 0.5,
+            padding: 5,
+            marginLeft: "5%",
+            marginRight: "5%",
+            marginTop: 10,
+            alignItems: "center",
+            borderColor: "grey",
+          }}
+        >
+          <Text style={{ fontWeight: "600" }}>Edit Profile</Text>
+        </TouchableOpacity>
       </View>
-    </View>
+      <View
+        style={{
+          borderColor: "grey",
+          borderTopWidth: 0.5,
+          borderBottomWidth: 0.5,
+          marginTop: 8,
+          alignItems: "center",
+        }}
+      >
+        <Text style={{ margin: 10, fontWeight: "600" }}>My Products</Text>
+      </View>
+      <View style={{ flex: 1 }}>
+        <View style={{ flexDirection: "row", margin: 10, flex: 1 }}>
+          <FlatList
+            data={array}
+            renderItem={({ item, index }) => {
+              if (typeof item === "object") {
+                return (
+                  <View
+                    elevation={5}
+                    style={{
+                      flexDirection: "row",
+                      backgroundColor: "#DCDCDC",
+                      borderRadius: 15,
+                      marginBottom: 10,
+                      shadowColor: "#000000",
+                      shadowOpacity: 0.4,
+                      shadowRadius: 1,
+                      shadowOffset: {
+                        height: 1,
+                        width: 1,
+                      },
+                    }}
+                  >
+                    <View
+                      style={{
+                        width: "45%",
+                        borderRightWidth: 1,
+                        borderColor: "white",
+                      }}
+                    >
+                      <Image
+                        source={{
+                          uri: item.uri,
+                        }}
+                        style={{
+                          width: 155,
+                          height: 150,
+                          borderRadius: 10,
+                          margin: 10,
+                        }}
+                      />
+                    </View>
+                    <View style={{ width: "55%" }}>
+                      <TouchableOpacity
+                        style={{
+                          alignSelf: "flex-end",
+                          marginTop: 5,
+                          marginRight: 10,
+                        }}
+                        onPress={() => {
+                          deleteData(index, item.uri);
+
+                          const newarr = array.filter((item, i) => i != index);
+                          setarray(newarr);
+                        }}
+                      >
+                        <Text
+                          style={{
+                            color: "red",
+                            fontSize: 18,
+                            fontWeight: "bold",
+                          }}
+                        >
+                          X
+                        </Text>
+                      </TouchableOpacity>
+                      <Text
+                        style={{
+                          fontWeight: "bold",
+                          marginTop: 4,
+                          marginLeft: 10,
+                        }}
+                      >
+                        {item.title}
+                      </Text>
+                      <Text
+                        style={{
+                          marginTop: 5,
+                          marginLeft: 10,
+                          color: "grey",
+                        }}
+                      >
+                        {item.description}
+                      </Text>
+                      <Text
+                        style={{
+                          fontWeight: "bold",
+                          marginTop: 5,
+                          marginLeft: 10,
+                          color: "#1DA1F2",
+                        }}
+                      >
+                        Rs. {item.price}
+                      </Text>
+                      <View
+                        style={{
+                          borderTopWidth: 1,
+                          marginTop: 10,
+                          borderColor: "white",
+                        }}
+                      >
+                        <TouchableOpacity
+                          style={{
+                            alignItems: "center",
+                            padding: 10,
+                            borderWidth: 0.5,
+                            borderColor: "white",
+                            margin: 10,
+                          }}
+                          onPress={() => {
+                            //We have to update both client and shopowner product so we need client product id to update it we get it from under method
+                            for (key in AllProduct) {
+                              if (AllProduct[key].uri == item.uri) {
+                                let tempId = arrayOfID[index];
+
+                                navigation.navigate("Edit Product", {
+                                  productId: tempId,
+                                  AccountID: subid,
+                                  customerProductID: key,
+                                  user: route.params.user,
+                                  firstname: route.params.firstname,
+                                  lastname: route.params.lastname,
+                                });
+                              }
+                            }
+                          }}
+                        >
+                          <Text style={{ fontWeight: "600" }}>Edit</Text>
+                        </TouchableOpacity>
+                      </View>
+                    </View>
+                  </View>
+                );
+              }
+            }}
+            keyExtractor={(item, index) => index.toString()}
+          />
+        </View>
+      </View>
+    </SafeAreaView>
   );
 }
 

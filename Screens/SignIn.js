@@ -26,7 +26,7 @@ const SignIn = ({ navigation, route }) => {
     if (user == "ShopOwner") {
       const response = await fetch(`${firebaseUrl}/${user}.json`);
       const data = await response.json();
-
+      // We use for loop to know which person login and through it we know randomly generated id and other credentials
       for (key in data) {
         if (data[key].email == email) {
           if (data[key].password == password) {
@@ -35,6 +35,8 @@ const SignIn = ({ navigation, route }) => {
             navigation.navigate("Dashboard", {
               id: id,
               user: user,
+              firstname: data[key].firstname,
+              lastname: data[key].lastname,
             });
             break;
           } else {
@@ -51,8 +53,9 @@ const SignIn = ({ navigation, route }) => {
     } else if (user == "Client") {
       const response = await fetch(`${firebaseUrl}/${user}.json`);
       const data = await response.json();
-
+      console.log("I am in client");
       for (key in data) {
+        console.log(key);
         if (data[key].email == email) {
           if (data[key].password == password) {
             let id = key;
@@ -60,6 +63,8 @@ const SignIn = ({ navigation, route }) => {
             navigation.navigate("Customer Dashboard", {
               id: id,
               user: user,
+              firstname: data[key].firstname,
+              lastname: data[key].lastname,
             });
             break;
           } else {
