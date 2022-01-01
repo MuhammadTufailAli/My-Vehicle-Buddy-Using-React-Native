@@ -66,7 +66,7 @@ const HomeShopOwner = ({ navigation, extraData }) => {
         </Text>
       </View>
 
-      <Text style={{ fontSize: 20, marginTop: 30, marginLeft: 5 }}>
+      <Text style={{ fontSize: 20, marginTop: 10, marginLeft: 5 }}>
         You are ShopOwner Of{" "}
       </Text>
       <View style={{ alignItems: "center", marginTop: 5, marginLeft: 5 }}>
@@ -166,7 +166,7 @@ const HomeShopOwner = ({ navigation, extraData }) => {
           borderRadius: "50%",
           marginLeft: "5%",
           marginRight: "5%",
-          marginTop: 5,
+          marginTop: 25,
         }}
         onPress={() => {
           navigation.navigate("Sign in", { user: extraData.user });

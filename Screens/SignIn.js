@@ -13,11 +13,9 @@ import Icon from "react-native-vector-icons/FontAwesome";
 
 const SignIn = ({ navigation, route }) => {
   const user = route.params.user;
-  console.log(user);
+
   const [email, setemail] = React.useState();
   const [password, setpassword] = React.useState();
-  const [cond1, setcond1] = React.useState(false);
-  const [cond2, setcond2] = React.useState(false);
 
   const firebaseUrl =
     "https://reactnativefirstdatabase-a7b2b-default-rtdb.firebaseio.com/";
@@ -27,54 +25,55 @@ const SignIn = ({ navigation, route }) => {
       const response = await fetch(`${firebaseUrl}/${user}.json`);
       const data = await response.json();
       // We use for loop to know which person login and through it we know randomly generated id and other credentials
+      var cond = false;
       for (key in data) {
-        if (data[key].email == email) {
-          if (data[key].password == password) {
-            let id = key;
-            setcond1(false);
-            navigation.navigate("Dashboard", {
-              id: id,
-              user: user,
-              firstname: data[key].firstname,
-              lastname: data[key].lastname,
-            });
-            break;
-          } else {
-            setcond1(true);
-          }
+        if (data[key].email == email && data[key].password == password) {
+          let id = key;
+
+          cond = false;
+
+          setemail("");
+          setpassword("");
+          navigation.navigate("Dashboard", {
+            id: id,
+            user: user,
+            firstname: data[key].firstname,
+            lastname: data[key].lastname,
+          });
+
+          break;
         } else {
-          setcond1(true);
+          cond = true;
         }
       }
+      console.log(cond);
 
-      if (cond1) {
+      if (cond) {
         alert("Invalid Email or Password");
       }
     } else if (user == "Client") {
       const response = await fetch(`${firebaseUrl}/${user}.json`);
       const data = await response.json();
       console.log("I am in client");
+      var cond = false;
       for (key in data) {
-        console.log(key);
-        if (data[key].email == email) {
-          if (data[key].password == password) {
-            let id = key;
-            setcond2(false);
-            navigation.navigate("Customer Dashboard", {
-              id: id,
-              user: user,
-              firstname: data[key].firstname,
-              lastname: data[key].lastname,
-            });
-            break;
-          } else {
-            setcond2(true);
-          }
+        if (data[key].email == email && data[key].password == password) {
+          let id = key;
+          cond = false;
+          setemail("");
+          setpassword("");
+          navigation.navigate("Customer Dashboard", {
+            id: id,
+            user: user,
+            firstname: data[key].firstname,
+            lastname: data[key].lastname,
+          });
+          break;
         } else {
-          setcond2(true);
+          cond = true;
         }
       }
-      if (cond2) {
+      if (cond) {
         alert("Invalid Email or Password");
       }
     }
@@ -96,12 +95,14 @@ const SignIn = ({ navigation, route }) => {
         <TextInput
           style={styles.inputText}
           placeholder="Enter Email"
+          value={email}
           onChangeText={(value) => setemail(value)}
         />
 
         <TextInput
           style={styles.inputText}
           placeholder="Enter Password"
+          value={password}
           onChangeText={(value) => setpassword(value)}
         />
       </View>
@@ -116,7 +117,9 @@ const SignIn = ({ navigation, route }) => {
             borderRadius: "50%",
             margin: 10,
           }}
-          onPress={loaddata}
+          onPress={() => {
+            loaddata();
+          }}
         >
           <Text style={{ color: "white", fontWeight: "500" }}>Login</Text>
         </TouchableOpacity>

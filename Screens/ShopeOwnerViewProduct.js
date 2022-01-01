@@ -12,6 +12,8 @@ import {
   TabBar,
   SafeAreaView,
 } from "react-native";
+import { Entypo } from "@expo/vector-icons";
+import Icon from "react-native-vector-icons/FontAwesome";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import AddProduct from "./AddProduct";
@@ -114,14 +116,14 @@ function ShopeOwnerViewProduct({ route, navigation }) {
     );
   }
   return (
-    <SafeAreaView style={{ backgroundColor: "white", height: "100%" }}>
+    <SafeAreaView style={{ backgroundColor: "#36454F", height: "100%" }}>
       <View>
         <View style={{ alignItems: "center" }}>
           <Image
             style={{ width: 90, height: 90 }}
             source={require("../assets/profile.png")}
           />
-          <Text style={{ marginTop: 10 }}>
+          <Text style={{ marginTop: 10, color: "white" }}>
             @{route.params.firstname}
             {route.params.lastname}
           </Text>
@@ -130,19 +132,21 @@ function ShopeOwnerViewProduct({ route, navigation }) {
           style={{ flexDirection: "row", marginLeft: "24%", marginTop: 20 }}
         >
           <Text style={{ marginRight: 15, fontSize: 18 }}>
-            <Text style={{ fontWeight: "bold" }}>{"\t"}219</Text>
+            <Text style={{ fontWeight: "bold", color: "white" }}>
+              {"\t"}219
+            </Text>
             {"\n"}
 
-            <Text style={{ color: "grey" }}> Followers</Text>
+            <Text style={{ color: "white" }}> Followers</Text>
           </Text>
 
-          <Text style={{ marginTop: 10, marginRight: 25, color: "grey" }}>
+          <Text style={{ marginTop: 10, marginRight: 25, color: "white" }}>
             |
           </Text>
           <Text style={{ marginRight: 15, fontSize: 18 }}>
-            <Text style={{ fontWeight: "bold" }}>999</Text>
+            <Text style={{ fontWeight: "bold", color: "white" }}>999</Text>
             {"\n"}
-            <Text style={{ color: "grey" }}>Likes</Text>
+            <Text style={{ color: "white" }}>Likes</Text>
           </Text>
         </View>
         <TouchableOpacity
@@ -160,22 +164,26 @@ function ShopeOwnerViewProduct({ route, navigation }) {
             marginRight: "5%",
             marginTop: 10,
             alignItems: "center",
-            borderColor: "grey",
+            borderColor: "white",
           }}
         >
-          <Text style={{ fontWeight: "600" }}>Edit Profile</Text>
+          <Text style={{ fontWeight: "600", color: "white" }}>
+            Edit Profile
+          </Text>
         </TouchableOpacity>
       </View>
       <View
         style={{
-          borderColor: "grey",
+          borderColor: "white",
           borderTopWidth: 0.5,
           borderBottomWidth: 0.5,
           marginTop: 8,
           alignItems: "center",
         }}
       >
-        <Text style={{ margin: 10, fontWeight: "600" }}>My Products</Text>
+        <Text style={{ margin: 10, fontWeight: "600", color: "white" }}>
+          My Products
+        </Text>
       </View>
       <View style={{ flex: 1 }}>
         <View style={{ flexDirection: "row", margin: 10, flex: 1 }}>
@@ -185,15 +193,15 @@ function ShopeOwnerViewProduct({ route, navigation }) {
               if (typeof item === "object") {
                 return (
                   <View
-                    elevation={5}
+                    elevation={6}
                     style={{
                       flexDirection: "row",
-                      backgroundColor: "#DCDCDC",
+                      backgroundColor: "#FAF9F6",
                       borderRadius: 15,
-                      marginBottom: 10,
-                      shadowColor: "#000000",
-                      shadowOpacity: 0.4,
-                      shadowRadius: 1,
+                      marginBottom: 15,
+                      shadowColor: "black",
+                      shadowOpacity: 1,
+                      shadowRadius: 5,
                       shadowOffset: {
                         height: 1,
                         width: 1,
@@ -204,7 +212,7 @@ function ShopeOwnerViewProduct({ route, navigation }) {
                       style={{
                         width: "45%",
                         borderRightWidth: 1,
-                        borderColor: "white",
+                        borderColor: "black",
                       }}
                     >
                       <Image
@@ -223,7 +231,7 @@ function ShopeOwnerViewProduct({ route, navigation }) {
                       <TouchableOpacity
                         style={{
                           alignSelf: "flex-end",
-                          marginTop: 5,
+                          marginTop: 3,
                           marginRight: 10,
                         }}
                         onPress={() => {
@@ -233,15 +241,12 @@ function ShopeOwnerViewProduct({ route, navigation }) {
                           setarray(newarr);
                         }}
                       >
-                        <Text
-                          style={{
-                            color: "red",
-                            fontSize: 18,
-                            fontWeight: "bold",
-                          }}
-                        >
-                          X
-                        </Text>
+                        <Entypo
+                          style={{ marginTOp: 5 }}
+                          name="circle-with-cross"
+                          size={26}
+                          color="red"
+                        />
                       </TouchableOpacity>
                       <Text
                         style={{
@@ -275,7 +280,7 @@ function ShopeOwnerViewProduct({ route, navigation }) {
                         style={{
                           borderTopWidth: 1,
                           marginTop: 10,
-                          borderColor: "white",
+                          borderColor: "black",
                         }}
                       >
                         <TouchableOpacity
@@ -283,7 +288,7 @@ function ShopeOwnerViewProduct({ route, navigation }) {
                             alignItems: "center",
                             padding: 10,
                             borderWidth: 0.5,
-                            borderColor: "white",
+                            borderColor: "black",
                             margin: 10,
                           }}
                           onPress={() => {

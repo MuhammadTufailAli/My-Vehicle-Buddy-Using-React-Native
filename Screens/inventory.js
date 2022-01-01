@@ -63,12 +63,12 @@ function inventory({ navigation, route }) {
     );
   }
   return (
-    <SafeAreaView style={{ backgroundColor: "white", height: "100%" }}>
+    <SafeAreaView style={{ backgroundColor: "#36454F", height: "100%" }}>
       <View
         style={{
           alignItems: "center",
           borderBottomWidth: 0.5,
-          borderColor: "grey",
+          borderColor: "white",
           paddingBottom: 5,
         }}
       >
@@ -92,12 +92,12 @@ function inventory({ navigation, route }) {
                   elevation={5}
                   style={{
                     flexDirection: "row",
-                    backgroundColor: "#DCDCDC",
+                    backgroundColor: "#FAF9F6",
                     borderRadius: 15,
-                    marginBottom: 10,
-                    shadowColor: "#000000",
-                    shadowOpacity: 0.4,
-                    shadowRadius: 1,
+                    marginBottom: 15,
+                    shadowColor: "black",
+                    shadowOpacity: 1,
+                    shadowRadius: 5,
                     shadowOffset: {
                       height: 1,
                       width: 1,
@@ -108,7 +108,7 @@ function inventory({ navigation, route }) {
                     style={{
                       width: "45%",
                       borderRightWidth: 1,
-                      borderColor: "white",
+                      borderColor: "#36454F",
                     }}
                   >
                     <TouchableOpacity

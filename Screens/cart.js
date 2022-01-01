@@ -11,6 +11,7 @@ import {
   FlatList,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { Entypo } from "@expo/vector-icons";
 import Icon from "react-native-vector-icons/FontAwesome";
 const firebaseUrl =
   "https://reactnativefirstdatabase-a7b2b-default-rtdb.firebaseio.com/";
@@ -74,17 +75,17 @@ function Cart({ navigation, route }) {
     );
   }
   return (
-    <SafeAreaView style={{ backgroundColor: "white", height: "100%" }}>
+    <SafeAreaView style={{ backgroundColor: "#36454F", height: "100%" }}>
       <View
         style={{
           alignItems: "center",
           marginBottom: 5,
           paddingBottom: 5,
           borderBottomWidth: 0.5,
-          borderColor: "grey",
+          borderColor: "white",
         }}
       >
-        <Text style={{ fontSize: 24, fontWeight: "600" }}>
+        <Text style={{ fontSize: 24, fontWeight: "600", color: "white" }}>
           My Cart{" "}
           <Icon
             style={{
@@ -108,12 +109,12 @@ function Cart({ navigation, route }) {
                     elevation={5}
                     style={{
                       flexDirection: "row",
-                      backgroundColor: "#DCDCDC",
+                      backgroundColor: "white",
                       borderRadius: 15,
-                      marginBottom: 10,
-                      shadowColor: "#000000",
-                      shadowOpacity: 0.4,
-                      shadowRadius: 1,
+                      marginBottom: 15,
+                      shadowColor: "black",
+                      shadowOpacity: 2,
+                      shadowRadius: 5,
                       shadowOffset: {
                         height: 1,
                         width: 1,
@@ -124,7 +125,7 @@ function Cart({ navigation, route }) {
                       style={{
                         width: "45%",
                         borderRightWidth: 1,
-                        borderColor: "white",
+                        borderColor: "#36454F",
                       }}
                     >
                       <Image
@@ -156,15 +157,12 @@ function Cart({ navigation, route }) {
                           marginRight: 10,
                         }}
                       >
-                        <Text
-                          style={{
-                            color: "red",
-                            fontSize: 18,
-                            fontWeight: "bold",
-                          }}
-                        >
-                          X
-                        </Text>
+                        <Entypo
+                          style={{ marginTOp: 5 }}
+                          name="circle-with-cross"
+                          size={26}
+                          color="red"
+                        />
                       </TouchableOpacity>
                       <Text
                         style={{

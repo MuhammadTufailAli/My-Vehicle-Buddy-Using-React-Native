@@ -63,7 +63,7 @@ const HomeClient = ({ navigation, extraData }) => {
         </Text>
       </View>
 
-      <Text style={{ fontSize: 20, marginTop: 30, marginLeft: 5 }}>
+      <Text style={{ fontSize: 20, marginTop: 10, marginLeft: 5 }}>
         You are Customer Of{" "}
       </Text>
       <View style={{ alignItems: "center", marginTop: 5, marginLeft: 5 }}>
@@ -131,7 +131,7 @@ const HomeClient = ({ navigation, extraData }) => {
         As <Text style={{ color: "red" }}>Covid</Text> is seperating once again
       </Text>
       <View style={{ alignItems: "center" }}>
-        <Text style={{ marginTop: 8, fontSize: 19, marginLeft: 5 }}>
+        <Text style={{ marginTop: 15, fontSize: 19, marginLeft: 5 }}>
           SHOP ONLINE
         </Text>
         <Text style={{ marginTop: 8, fontSize: 19, marginLeft: 5 }}>
@@ -162,7 +162,7 @@ const HomeClient = ({ navigation, extraData }) => {
           borderRadius: "50%",
           marginLeft: "5%",
           marginRight: "5%",
-          marginTop: 20,
+          marginTop: 40,
         }}
         onPress={() => {
           navigation.navigate("Sign in", { user: extraData.user });
