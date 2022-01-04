@@ -1,12 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   Image,
-  StyleSheet,
   Text,
   TouchableOpacity,
   View,
-  TextInput,
-  Button,
   ActivityIndicator,
   FlatList,
 } from "react-native";
@@ -144,7 +141,7 @@ function Cart({ navigation, route }) {
                       <TouchableOpacity
                         onPress={() => {
                           deleteData(index);
-                          console.log(array);
+
                           //We have to remove the item we pressed so we get index of it through flatlist index and we will get newarray when index and i of array are not same
                           const newarr = array.filter((item, i) => i != index);
                           setarray(newarr);

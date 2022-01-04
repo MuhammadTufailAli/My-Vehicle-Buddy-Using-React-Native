@@ -1,21 +1,19 @@
 import * as React from "react";
 import {
-  Button,
   StyleSheet,
   Text,
   View,
-  ActivityIndicator,
-  FlatList,
   TouchableOpacity,
   TextInput,
 } from "react-native";
 const validator = require("validator");
 
 import Icon from "react-native-vector-icons/FontAwesome";
-
+//Take user from Signin and make account of that particular user there is no need of if statement here
+//It also have Email Validation
 const SignUp = ({ navigation, route }) => {
   const user = route.params.user;
-  console.log(user);
+
   const [firstname, setfirstname] = React.useState("");
   const [lastname, setlastname] = React.useState("");
   const [email, setemail] = React.useState("");
@@ -26,8 +24,6 @@ const SignUp = ({ navigation, route }) => {
     "https://reactnativefirstdatabase-a7b2b-default-rtdb.firebaseio.com/";
 
   const savedata = () => {
-    console.log("Adding");
-
     var requestoptions = {
       method: "POST",
       body: JSON.stringify({
@@ -121,7 +117,6 @@ const SignUp = ({ navigation, route }) => {
             } else {
               alert("Enter all Fields");
             }
-            console.log(validator.isEmail("john.doeexample.com"));
           }}
         >
           <Text style={{ color: "white", fontWeight: "500" }}>SignUp</Text>

@@ -1,24 +1,24 @@
 import * as React from "react";
-import { Button, StyleSheet, Text, View } from "react-native";
+import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import SignUp from "./Screens/SignUpPage";
-import SignIn from "./Screens/SignIn";
-import AddProduct from "./Screens/AddProduct";
-import dashboard from "./Screens/dashboard";
-import inventory from "./Screens/inventory";
-import ProductScreen from "./Screens/productScreen";
-import customerDashboard from "./Screens/customerDashboard";
-import Cart from "./Screens/cart";
-import ShopeOwnerViewProduct from "./Screens/ShopeOwnerViewProduct";
-import ShopOwnerEditProduct from "./Screens/ShopOwnerEditProduct";
-import WelcomeScreen from "./Screens/WelcomeScreen";
-import EditProfile from "./Screens/EditProfieCredentials";
 import IntroScreen from "./Screens/IntroScreen";
-import HomeShopOwner from "./Screens/homeShopOwner";
+import WelcomeScreen from "./Screens/WelcomeScreen";
+import SignIn from "./Screens/SignIn";
+import SignUp from "./Screens/SignUpPage";
 import SelectUi from "./Screens/SelectUi";
 import SobanScreen from "./Screens/SobanScreen";
+import dashboard from "./Screens/dashboard";
+import HomeShopOwner from "./Screens/homeShopOwner";
+import AddProduct from "./Screens/AddProduct";
+import ShopeOwnerViewProduct from "./Screens/ShopeOwnerViewProduct";
+import ShopOwnerEditProduct from "./Screens/ShopOwnerEditProduct";
+import EditProfile from "./Screens/EditProfieCredentials";
 import SelectUi2 from "./Screens/SelectUi2";
+import customerDashboard from "./Screens/customerDashboard";
+import inventory from "./Screens/inventory";
+import ProductScreen from "./Screens/productScreen";
+import Cart from "./Screens/cart";
 import AdminSignin from "./Screens/AdminSignin";
 import AdminScreen from "./Screens/AdminScreen";
 const Stack = createNativeStackNavigator();
@@ -32,30 +32,24 @@ export default function App() {
         }}
       >
         <Stack.Screen name="Introduction" component={IntroScreen} />
-        <Stack.Screen name="Home" component={HomeShopOwner} />
         <Stack.Screen name="Welcome Screen" component={WelcomeScreen} />
         <Stack.Screen name="Sign in" component={SignIn} />
-        <Stack.Screen name="Customer Dashboard" component={customerDashboard} />
-        <Stack.Screen name="Setting" component={EditProfile} />
+        <Stack.Screen name="Sign up" component={SignUp} />
         <Stack.Screen name="SelectUI" component={SelectUi} />
-        <Stack.Screen name="SelectUI2" component={SelectUi2} />
         <Stack.Screen name="Buy and Sell" component={SobanScreen} />
+        <Stack.Screen name="Dashboard" component={dashboard} />
+        <Stack.Screen name="Home" component={HomeShopOwner} />
+        <Stack.Screen name="Add Product" component={AddProduct} />
+        <Stack.Screen name="View Product" component={ShopeOwnerViewProduct} />
+        <Stack.Screen name="Edit Product" component={ShopOwnerEditProduct} />
+        <Stack.Screen name="Setting" component={EditProfile} />
+        <Stack.Screen name="SelectUI2" component={SelectUi2} />
+        <Stack.Screen name="Customer Dashboard" component={customerDashboard} />
+        <Stack.Screen name="Inventory" component={inventory} />
+        <Stack.Screen name="Product" component={ProductScreen} />
+        <Stack.Screen name="Cart" component={Cart} />
         <Stack.Screen name="AdminSignin" component={AdminSignin} />
         <Stack.Screen name="AdminScreen" component={AdminScreen} />
-
-        <Stack.Screen name="Edit Product" component={ShopOwnerEditProduct} />
-
-        <Stack.Screen name="Inventory" component={inventory} />
-        <Stack.Screen name="Cart" component={Cart} />
-
-        <Stack.Screen name="Dashboard" component={dashboard} />
-        <Stack.Screen name="View Product" component={ShopeOwnerViewProduct} />
-
-        <Stack.Screen name="Add Product" component={AddProduct} />
-
-        <Stack.Screen name="Product" component={ProductScreen} />
-
-        <Stack.Screen name="Sign up" component={SignUp} />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -114,11 +108,3 @@ const styles = StyleSheet.create({
     marginRight: 15,
   },
 });
-
-// AssignedTasks.add({
-//   TaskName: "Bye World",
-//   TaskDescp: "Make an App saying Bye world",
-//   Billable: false,
-//   Rate: 0,
-//   empID: "3",
-// });

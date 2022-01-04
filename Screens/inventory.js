@@ -1,18 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   Image,
-  StyleSheet,
   Text,
   TouchableOpacity,
   View,
-  TextInput,
-  Button,
   ActivityIndicator,
   FlatList,
-  TabBar,
   SafeAreaView,
 } from "react-native";
-import { color } from "react-native-reanimated";
+
 import Icon from "react-native-vector-icons/FontAwesome";
 
 const firebaseUrl =
@@ -32,16 +28,12 @@ function inventory({ navigation, route }) {
         let samplearray = [];
         for (key in responsejson) {
           if (array.length == 0) {
-            console.log("First add");
             samplearray.push(responsejson[key]);
           } else {
-            console.log("other addition");
             samplearray.push(responsejson[key]);
           }
         }
         setarray(samplearray);
-
-        console.log(array);
 
         setcondition(false);
       })

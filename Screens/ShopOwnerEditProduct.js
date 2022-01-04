@@ -36,8 +36,6 @@ export default function ShopOwnerEditProduct({ navigation, route }) {
     "https://reactnativefirstdatabase-a7b2b-default-rtdb.firebaseio.com/";
 
   const updatedata = () => {
-    console.log("Updating");
-
     var requestoptions = {
       method: "PATCH",
       body: JSON.stringify({
@@ -84,7 +82,6 @@ export default function ShopOwnerEditProduct({ navigation, route }) {
     }
 
     let result = await ImagePicker.launchImageLibraryAsync();
-    // console.log(result);
 
     setpickerResult(result);
   };
@@ -169,8 +166,6 @@ export default function ShopOwnerEditProduct({ navigation, route }) {
                 } else {
                   alert("Fill All Fields");
                 }
-
-                console.log(pickerResult);
               }}
             >
               <Text style={{ color: "white", fontWeight: "500" }}>Update</Text>
@@ -179,54 +174,6 @@ export default function ShopOwnerEditProduct({ navigation, route }) {
         </View>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
-    // <View>
-    //   <TouchableOpacity onPress={openImagePickerAsync} style={styles.button}>
-    //     <Text style={styles.buttonText}>+ Pick a photo</Text>
-    //   </TouchableOpacity>
-
-    //   <View style={{ alignItems: "center" }}>
-    //     <Image
-    //       source={{
-    //         uri: pickerResult.uri,
-    //       }}
-    //       style={{ width: 100, height: 100, borderRadius: 10 }}
-    //     />
-    //   </View>
-    //   <Text>Price *</Text>
-
-    //   <TextInput
-    //     style={styles.inputText}
-    //     placeholder="Enter Price"
-    //     keyboardType={"phone-pad"}
-    //     onChangeText={(val) => setprice(val)}
-    //   />
-    //   <Text>Condition</Text>
-    //   <TextInput
-    //     style={styles.inputText}
-    //     placeholder="Enter Product Condition"
-    //     onChangeText={(val) => setcondition(val)}
-    //   />
-    //   <Text>Ad Title</Text>
-    //   <TextInput
-    //     style={styles.inputText}
-    //     placeholder="Enter Ad Title"
-    //     onChangeText={(val) => settitle(val)}
-    //   />
-    //   <Text>Describe what you are selling</Text>
-    //   <TextInput
-    //     style={styles.inputText}
-    //     placeholder="Enter Product description"
-    //     onChangeText={(val) => setdescription(val)}
-    //   />
-    //   <Text>Location</Text>
-    //   <TextInput
-    //     style={styles.inputText}
-    //     placeholder="Enter Location"
-    //     onChangeText={(val) => setlocation(val)}
-    //   />
-
-    //   <Button title="Post Add" onPress={updatedata} />
-    // </View>
   );
 }
 

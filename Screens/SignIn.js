@@ -1,15 +1,15 @@
 import * as React from "react";
 import {
-  Button,
   StyleSheet,
   Text,
   View,
-  ActivityIndicator,
-  FlatList,
   TouchableOpacity,
   TextInput,
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
+//It take user name from Welcome screen So that whether it is shopowner or Client and check their Account from database using If and else if statement
+//SignIn have alert if user input wrong ID/Pass
+//It send id,user,firstname,lastname to next dashboard. Id of the person which logged in
 
 const SignIn = ({ navigation, route }) => {
   const user = route.params.user;
@@ -46,7 +46,6 @@ const SignIn = ({ navigation, route }) => {
           cond = true;
         }
       }
-      console.log(cond);
 
       if (cond) {
         alert("Invalid Email or Password");
@@ -54,7 +53,7 @@ const SignIn = ({ navigation, route }) => {
     } else if (user == "Client") {
       const response = await fetch(`${firebaseUrl}/${user}.json`);
       const data = await response.json();
-      console.log("I am in client");
+
       var cond = false;
       for (key in data) {
         if (data[key].email == email && data[key].password == password) {

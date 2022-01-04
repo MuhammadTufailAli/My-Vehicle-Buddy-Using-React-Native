@@ -1,26 +1,14 @@
 import React, { useState, useEffect } from "react";
 import {
-  Image,
-  StyleSheet,
   Text,
   TouchableOpacity,
   View,
-  TextInput,
-  Button,
-  ScrollView,
   SafeAreaView,
   ActivityIndicator,
   FlatList,
 } from "react-native";
 
-import Ionicons from "react-native-vector-icons/Ionicons";
 import Icon from "react-native-vector-icons/FontAwesome";
-import Constants from "expo-constants";
-import * as ImagePicker from "expo-image-picker";
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
-
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 export default ({ navigation }) => {
   const [array, setarray] = useState([]);
@@ -29,7 +17,7 @@ export default ({ navigation }) => {
 
   const deleteData = (index) => {
     const subid = arrayOfID[index];
-    console.log(subid);
+
     var requestOptions = {
       method: "DELETE",
     };
@@ -54,18 +42,15 @@ export default ({ navigation }) => {
         let samplearrayID = [];
         for (key in responsejson) {
           if (array.length == 0) {
-            console.log("First add");
             samplearray.push(responsejson[key]);
             samplearrayID.push(key);
           } else {
-            console.log("other addition");
             samplearray.push(responsejson[key]);
             samplearrayID.push(key);
           }
         }
         setarray(samplearray);
         setarrayofID(samplearrayID);
-        console.log(array);
 
         setcondition(false);
       })

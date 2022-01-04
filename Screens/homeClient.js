@@ -1,16 +1,5 @@
-import React, { useState, useEffect } from "react";
-import {
-  Image,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-  TextInput,
-  Button,
-  Alert,
-  SafeAreaView,
-  ActivityIndicator,
-} from "react-native";
+import React from "react";
+import { Text, TouchableOpacity, View, ActivityIndicator } from "react-native";
 
 const HomeClient = ({ navigation, extraData }) => {
   const [getdata, setdata] = React.useState([]);
@@ -27,7 +16,6 @@ const HomeClient = ({ navigation, extraData }) => {
       .then((responseJson) => {
         setdata(responseJson);
         setcondition(false);
-        console.log("I am in covid");
       })
       .catch((err) => {
         console.error(err);
@@ -35,8 +23,6 @@ const HomeClient = ({ navigation, extraData }) => {
   };
 
   React.useEffect(() => {
-    console.log("JII");
-
     getcovid();
   }, []);
   if (getcondition) {

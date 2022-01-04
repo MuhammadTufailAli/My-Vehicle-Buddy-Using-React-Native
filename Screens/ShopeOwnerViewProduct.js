@@ -1,24 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   Image,
-  StyleSheet,
   Text,
   TouchableOpacity,
   View,
-  TextInput,
-  Button,
   ActivityIndicator,
   FlatList,
-  TabBar,
   SafeAreaView,
 } from "react-native";
 import { Entypo } from "@expo/vector-icons";
-import Icon from "react-native-vector-icons/FontAwesome";
-import { NavigationContainer } from "@react-navigation/native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import AddProduct from "./AddProduct";
 
-import EditProfile from "./EditProfieCredentials";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+
 const firebaseUrl =
   "https://reactnativefirstdatabase-a7b2b-default-rtdb.firebaseio.com/";
 
@@ -27,7 +20,6 @@ const Tab = createBottomTabNavigator();
 function ShopeOwnerViewProduct({ route, navigation }) {
   const subid = route.params.id;
   let data = route;
-  console.log(data);
 
   //array is to show only shopOwner product
   const [array, setarray] = useState([]);

@@ -1,22 +1,12 @@
-import React, { useState, useEffect } from "react";
-import {
-  Image,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-  TextInput,
-  Button,
-  ActivityIndicator,
-  FlatList,
-} from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import React from "react";
+import { Image, Text, TouchableOpacity, View } from "react-native";
+
 import Icon from "react-native-vector-icons/FontAwesome";
 
 const firebaseUrl =
   "https://reactnativefirstdatabase-a7b2b-default-rtdb.firebaseio.com/";
 
-const ProductScreen = ({ navigation, route }) => {
+const ProductScreen = ({ route }) => {
   const id = route.params.id;
   const title = route.params.name;
   const condition = route.params.condition;
@@ -26,8 +16,6 @@ const ProductScreen = ({ navigation, route }) => {
   const uri = route.params.photoUri;
 
   const savedata = () => {
-    console.log("Adding");
-
     var requestoptions = {
       method: "POST",
       body: JSON.stringify({

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   Image,
   StyleSheet,
@@ -6,7 +6,6 @@ import {
   TouchableOpacity,
   View,
   TextInput,
-  Button,
   ScrollView,
   SafeAreaView,
 } from "react-native";
@@ -29,8 +28,6 @@ export default function AddProduct() {
     "https://reactnativefirstdatabase-a7b2b-default-rtdb.firebaseio.com/";
 
   const savedata = () => {
-    console.log("Adding");
-
     var requestoptions = {
       method: "POST",
       body: JSON.stringify({
@@ -78,7 +75,6 @@ export default function AddProduct() {
             }}
             style={{ width: 100, height: 100, borderRadius: 10 }}
           />
-          {console.log(pickerResult.uri)}
         </View>
 
         <View style={{ margin: 5, padding: 18, marginTop: 18 }}>

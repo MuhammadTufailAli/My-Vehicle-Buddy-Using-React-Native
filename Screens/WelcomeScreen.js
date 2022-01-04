@@ -4,11 +4,9 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
-  Button,
   View,
 } from "react-native";
-import Icon from "react-native-vector-icons/FontAwesome";
-
+//Have background image with 3 buttons to go to 3 users of App
 const WelcomeScreen = ({ navigation }) => (
   <View style={styles.container}>
     <ImageBackground

@@ -1,11 +1,8 @@
 import * as React from "react";
 import {
-  Button,
   StyleSheet,
   Text,
   View,
-  ActivityIndicator,
-  FlatList,
   TouchableOpacity,
   TextInput,
 } from "react-native";
@@ -15,8 +12,7 @@ import Icon from "react-native-vector-icons/FontAwesome";
 const EditProfile = ({ navigation, route }) => {
   const id = route.params.id;
   const user = route.params.user;
-  console.log(user);
-  console.log(id);
+
   const [firstname, setfirstname] = React.useState("");
   const [lastname, setlastname] = React.useState("");
   const [email, setemail] = React.useState("");
@@ -25,9 +21,8 @@ const EditProfile = ({ navigation, route }) => {
 
   const firebaseUrl =
     "https://reactnativefirstdatabase-a7b2b-default-rtdb.firebaseio.com/";
-
+  //We Take username and if the name is shopowner we update shopowner profile credintail and if it is user then we update user profile credintail
   const update = () => {
-    console.log("Adding");
     if (user == "ShopOwner") {
       var requestoptions = {
         method: "PATCH",
@@ -138,8 +133,6 @@ const EditProfile = ({ navigation, route }) => {
             } else {
               alert("Enter all Fields");
             }
-            // update();
-            // navigation.navigate("Sign in", { user: user });
           }}
         >
           <Text style={{ color: "white", fontWeight: "500" }}>Update</Text>

@@ -1,29 +1,14 @@
-import React, { useState, useEffect } from "react";
-import {
-  Image,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-  TextInput,
-  Button,
-  ActivityIndicator,
-  FlatList,
-  TabBar,
-} from "react-native";
+import React from "react";
 
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
-import { NavigationContainer } from "@react-navigation/native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import AddProduct from "./AddProduct";
-import EditProfile from "./EditProfieCredentials";
-import ShopeOwnerViewProduct from "./ShopeOwnerViewProduct";
-import HomeShopOwner from "./homeShopOwner";
 
-const firebaseUrl =
-  "https://reactnativefirstdatabase-a7b2b-default-rtdb.firebaseio.com/";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import HomeShopOwner from "./homeShopOwner";
+import AddProduct from "./AddProduct";
+import ShopeOwnerViewProduct from "./ShopeOwnerViewProduct";
+import EditProfile from "./EditProfieCredentials";
 
 const Tab = createBottomTabNavigator();
 

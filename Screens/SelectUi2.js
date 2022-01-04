@@ -1,52 +1,11 @@
-// import * as React from "react";
-// import {
-//   Button,
-//   StyleSheet,
-//   Text,
-//   View,
-//   ActivityIndicator,
-//   FlatList,
-//   TouchableOpacity,
-//   TextInput,
-// } from "react-native";
-// import { SafeAreaView } from "react-native-safe-area-context";
-
-// const SelectUi2 = ({ navigation, route }) => {
-//   return (
-//     <SafeAreaView>
-//       <Button
-//         title="Buy and Sell"
-//         onPress={() => {
-//           navigation.navigate("Buy and Sell");
-//         }}
-//       />
-//       <Button
-//         title="Tufail Ui"
-//         onPress={() => {
-//           navigation.navigate("Customer Dashboard", {
-//             id: route.params.id,
-//             user: route.params.user,
-//             firstname: route.params.firstname,
-//             lastname: route.params.lastname,
-//           });
-//         }}
-//       />
-//     </SafeAreaView>
-//   );
-// };
-
-// export default SelectUi2;
-
 import React from "react";
 import {
   ImageBackground,
   StyleSheet,
   Text,
   TouchableOpacity,
-  Button,
   View,
 } from "react-native";
-import Icon from "react-native-vector-icons/FontAwesome";
 
 const SelectUi2 = ({ navigation, route }) => (
   <View style={styles.container}>

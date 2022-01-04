@@ -1,22 +1,5 @@
-import React, { useState, useEffect } from "react";
-import {
-  Image,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-  TextInput,
-  Button,
-  ScrollView,
-  SafeAreaView,
-} from "react-native";
-
-import Ionicons from "react-native-vector-icons/Ionicons";
-import Icon from "react-native-vector-icons/FontAwesome";
-import Constants from "expo-constants";
-import * as ImagePicker from "expo-image-picker";
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
+import React from "react";
+import { Image, Text, TouchableOpacity, View, ScrollView } from "react-native";
 
 export default ({ navigation, route }) => {
   const { cars } = route.params;
@@ -26,16 +9,15 @@ export default ({ navigation, route }) => {
         <TouchableOpacity
           onPress={() => navigation.navigate("View Ads")}
           style={{
-            height: 50,
-            width: 50,
+            padding: 10,
             alignItems: "center",
             justifyContent: "center",
             backgroundColor: "#4682b4",
-            borderRadius: 10,
+            borderRadius: "50%",
+            width: "20%",
           }}
         >
           <Text style={{ fontWeight: "bold", fontSize: 16, color: "#f5f5f5" }}>
-            {" "}
             Back{" "}
           </Text>
         </TouchableOpacity>

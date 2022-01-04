@@ -1,26 +1,13 @@
-import React, { useState, useEffect } from "react";
-import {
-  Image,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-  TextInput,
-  Button,
-  ScrollView,
-  Pressable,
-  SafeAreaView,
-} from "react-native";
+import React from "react";
+import { Text, View, Pressable } from "react-native";
 
-import Ionicons from "react-native-vector-icons/Ionicons";
 import Icon from "react-native-vector-icons/FontAwesome";
-import * as ImagePicker from "expo-image-picker";
+
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Products from "./products";
 import Owner from "./ShopOwner";
 import Clients from "./Clients";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 function Home({ navigation }) {
   return (

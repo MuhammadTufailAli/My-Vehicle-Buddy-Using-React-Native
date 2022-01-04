@@ -1,18 +1,8 @@
 import * as React from "react";
-import {
-  Button,
-  StyleSheet,
-  Text,
-  View,
-  ActivityIndicator,
-  FlatList,
-  TouchableOpacity,
-  Image,
-  TextInput,
-} from "react-native";
+import { Text, View, TouchableOpacity, Image } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Icon from "react-native-vector-icons/FontAwesome";
-
+//Just an intro screen with car logo and photo in center with button in bottom
 const IntroScreen = ({ navigation }) => {
   return (
     <SafeAreaView style={{ backgroundColor: "#1DA1F2", height: "100%" }}>
@@ -52,7 +42,7 @@ const IntroScreen = ({ navigation }) => {
             navigation.navigate("Welcome Screen");
           }}
           style={{
-            marginTop: "40%",
+            marginTop: "30%",
             padding: 14,
             backgroundColor: "black",
             width: "80%",

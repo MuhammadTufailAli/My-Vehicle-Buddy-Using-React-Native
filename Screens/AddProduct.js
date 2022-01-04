@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   Image,
   StyleSheet,
@@ -6,20 +6,19 @@ import {
   TouchableOpacity,
   View,
   TextInput,
-  Button,
-  Alert,
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
   Keyboard,
   Platform,
-  SafeAreaView,
 } from "react-native";
 
 import * as ImagePicker from "expo-image-picker";
-
+// It receive 4 things id,user,firstname,lastname but usese id only
+//Id is used to add product to that specific person which logged in using this id.
+//The field also move up when keyboard opens
 export default function AddProduct({ extraData }) {
   const id = extraData.id;
-  console.log(id);
+
   const [pickerResult, setpickerResult] = useState({});
   const [price, setprice] = useState();
   const [title, settitle] = useState();
@@ -31,8 +30,6 @@ export default function AddProduct({ extraData }) {
     "https://reactnativefirstdatabase-a7b2b-default-rtdb.firebaseio.com/";
 
   const savedata = () => {
-    console.log("Adding");
-
     var requestoptions = {
       method: "POST",
       body: JSON.stringify({
@@ -66,7 +63,6 @@ export default function AddProduct({ extraData }) {
     }
 
     let result = await ImagePicker.launchImageLibraryAsync();
-    // console.log(result);
 
     setpickerResult(result);
   };
@@ -151,8 +147,6 @@ export default function AddProduct({ extraData }) {
                 } else {
                   alert("Fill All Fields");
                 }
-
-                console.log(pickerResult);
               }}
             >
               <Text style={{ color: "white", fontWeight: "500" }}>Post</Text>
